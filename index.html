@@ -32,6 +32,12 @@
             text-align: center;
         }
 
+        header .logo {
+            max-width: 200px;
+            height: auto;
+            margin-bottom: 30px;
+        }
+
         header h1 {
             font-size: 3rem;
             font-weight: 700;
@@ -247,6 +253,10 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            header .logo {
+                max-width: 150px;
+            }
+
             header h1 {
                 font-size: 2rem;
             }
@@ -269,6 +279,7 @@
     <!-- Header -->
     <header>
         <div class="container">
+            <img src="https://raw.githubusercontent.com/rising-star-web/rising-star-logo-public/refs/heads/main/bluehb.png" alt="Coding Mind Logo" class="logo">
             <h1>AI × Business Pathway</h1>
             <p class="subtitle">从AI认知到商业实战</p>
             <p>专为对商业、创新与科技感兴趣的学生设计的AI实践路径。从AI商业思维到产品设计、AI编程，再到家庭企业与真实企业实战，帮助学生将AI能力转化为创新与领导力。</p>
