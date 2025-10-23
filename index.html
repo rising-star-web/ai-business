@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI × Business Pathway | Coding Mind 编程思维</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        header .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            opacity: 0.95;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+
+        /* Overview Section */
+        .overview {
+            padding: 80px 20px;
+            background: #f8f9fa;
+        }
+
+        .overview h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #667eea;
+        }
+
+        .pathway-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .pathway-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid #667eea;
+        }
+
+        .pathway-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(102,126,234,0.2);
+        }
+
+        .pathway-card .level {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .pathway-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .pathway-card .goal {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .pathway-card .outcome {
+            background: #f0f4ff;
+            padding: 12px 15px;
+            border-radius: 8px;
+            color: #667eea;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        /* Level Details */
+        .level-details {
+            padding: 80px 20px;
+        }
+
+        .level-section {
+            margin-bottom: 80px;
+        }
+
+        .level-section h2 {
+            font-size: 2rem;
+            color: #667eea;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .level-section .theme {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .level-section .objective {
+            background: #f8f9fa;
+            padding: 20px;
+            border-left: 4px solid #667eea;
+            margin: 20px 0;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .modules, .projects, .highlights {
+            margin: 30px 0;
+        }
+
+        .modules h3, .projects h3, .highlights h3 {
+            font-size: 1.3rem;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .modules ul, .projects ul, .highlights ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .modules li, .projects li, .highlights li {
+            padding: 12px 0 12px 30px;
+            position: relative;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .modules li:before, .projects li:before, .highlights li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .outcome-box {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+            border: 2px solid #667eea;
+        }
+
+        .outcome-box strong {
+            color: #667eea;
+            font-size: 1.1rem;
+        }
+
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 18px 50px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 30px rgba(0,0,0,0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: #2d3748;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .overview h2, .cta h2 {
+                font-size: 2rem;
+            }
+
+            .pathway-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <h1>AI × Business Pathway</h1>
+            <p class="subtitle">从AI认知到商业实战</p>
+            <p>专为对商业、创新与科技感兴趣的学生设计的AI实践路径。从AI商业思维到产品设计、AI编程，再到家庭企业与真实企业实战，帮助学生将AI能力转化为创新与领导力。</p>
+        </div>
+    </header>
+
+    <!-- Pathway Overview -->
+    <section class="overview">
+        <div class="container">
+            <h2>课程路径概览</h2>
+            <div class="pathway-grid">
+                <div class="pathway-card">
+                    <span class="level">Level 1</span>
+                    <h3>AI Product Design & Entrepreneurship</h3>
+                    <p class="goal"><strong>核心目标：</strong>学会发现商业痛点并设计AI产品</p>
+                    <div class="outcome">
+                        <strong>项目成果：</strong>商业计划书 + 原型Demo
+                    </div>
+                </div>
+
+                <div class="pathway-card">
+                    <span class="level">Level 2</span>
+                    <h3>AI Coding for Product Innovation</h3>
+                    <p class="goal"><strong>核心目标：</strong>用AI工具开发科技产品</p>
+                    <div class="outcome">
+                        <strong>项目成果：</strong>可运行AI应用 + 代码展示
+                    </div>
+                </div>
+
+                <div class="pathway-card">
+                    <span class="level">Level 3A</span>
+                    <h3>AI for Family Business Innovation</h3>
+                    <p class="goal"><strong>核心目标：</strong>参与家庭企业AI创新</p>
+                    <div class="outcome">
+                        <strong>项目成果：</strong>家族企业AI方案报告
+                    </div>
+                </div>
+
+                <div class="pathway-card">
+                    <span class="level">Level 3B</span>
+                    <h3>AI Industry Internship Program</h3>
+                    <p class="goal"><strong>核心目标：</strong>企业实战AI实习</p>
+                    <div class="outcome">
+                        <strong>项目成果：</strong>企业项目报告 + 推荐信
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Level 1 Details -->
+    <section class="level-details">
+        <div class="container">
+            <div class="level-section">
+                <h2>Level 1：AI Product Design & Entrepreneurship</h2>
+                <p class="theme">主题定位：从AI商业洞察到产品创新</p>
+
+                <div class="objective">
+                    <strong>目标：</strong>理解AI在商业中的真实应用，学习如何用AI技术创造具备商业价值的产品或创业方案。
+                </div>
+
+                <div class="modules">
+                    <h3>核心模块</h3>
+                    <ul>
+                        <li>AI商业认知：AI如何重塑产业结构、决策方式与营销策略</li>
+                        <li>市场洞察与痛点分析：如何识别AI可以解决的商业问题</li>
+                        <li>产品设计与原型构建（无代码或轻量开发）</li>
+                        <li>商业模式创新与展示</li>
+                    </ul>
+                </div>
+
+                <div class="projects">
+                    <h3>项目示例</h3>
+                    <ul>
+                        <li>"AI简历优化师"、"AI学习顾问"、"AI品牌策划工具"</li>
+                    </ul>
+                </div>
+
+                <div class="outcome-box">
+                    <strong>成果形式：</strong>商业计划书 + 产品Demo展示
+                </div>
+            </div>
+
+            <!-- Level 2 Details -->
+            <div class="level-section">
+                <h2>Level 2：AI Coding for Product Innovation</h2>
+                <p class="theme">主题定位：用AI进行科技产品开发</p>
+
+                <div class="objective">
+                    <strong>目标：</strong>学生掌握AI辅助编程工具（如Cursor、GitHub Copilot、Replit AI等）并能够从0构建AI驱动的产品。
+                </div>
+
+                <div class="modules">
+                    <h3>核心模块</h3>
+                    <ul>
+                        <li>AI辅助编程与代码生成原理</li>
+                        <li>Web/App/Chatbot 原型开发</li>
+                        <li>代码调试、部署与版本控制</li>
+                    </ul>
+                </div>
+
+                <div class="projects">
+                    <h3>项目示例</h3>
+                    <ul>
+                        <li>开发AI电商分析系统</li>
+                        <li>构建AI推荐引擎或营销内容生成平台</li>
+                    </ul>
+                </div>
+
+                <div class="outcome-box">
+                    <strong>成果形式：</strong>可运行AI产品 + GitHub展示
+                </div>
+            </div>
+
+            <!-- Level 3A Details -->
+            <div class="level-section">
+                <h2>Level 3A：AI for Family Business Innovation</h2>
+                <p class="theme">主题定位：以AI赋能家庭企业创新（Family Entrepreneurship）</p>
+
+                <div class="objective">
+                    <strong>目标：</strong>让学生深入理解自己家庭企业的运作，提出基于AI的创新解决方案，提升家庭企业的智能化水平。
+                </div>
+
+                <div class="highlights">
+                    <h3>核心亮点</h3>
+                    <ul>
+                        <li><strong>Family Involvement：</strong>家长企业家提供真实企业问题</li>
+                        <li>学生以创新顾问身份参与问题分析与方案设计</li>
+                        <li>家庭价值传承 × AI创新思维结合</li>
+                    </ul>
+                </div>
+
+                <div class="projects">
+                    <h3>项目示例</h3>
+                    <ul>
+                        <li>构建企业销售预测模型</li>
+                        <li>利用生成式AI优化客户沟通与品牌推广</li>
+                    </ul>
+                </div>
+
+                <div class="outcome-box">
+                    <strong>成果形式：</strong>Family Business AI Report + Demo Day展示
+                </div>
+            </div>
+
+            <!-- Level 3B Details -->
+            <div class="level-section">
+                <h2>Level 3B：AI Industry Internship Program</h2>
+                <p class="theme">主题定位：与合作企业开展AI实战实习</p>
+
+                <div class="objective">
+                    <strong>目标：</strong>让学生进入真实企业环境，以AI为核心参与产品研发、数据分析或市场优化项目。
+                </div>
+
+                <div class="highlights">
+                    <h3>核心亮点</h3>
+                    <ul>
+                        <li>企业合作项目制实习</li>
+                        <li>学生获得企业导师指导与推荐信</li>
+                        <li>真实商业问题 × AI技术实战经验</li>
+                    </ul>
+                </div>
+
+                <div class="projects">
+                    <h3>项目示例</h3>
+                    <ul>
+                        <li>参与AI客服系统开发</li>
+                        <li>协助创业公司构建智能营销分析平台</li>
+                    </ul>
+                </div>
+
+                <div class="outcome-box">
+                    <strong>成果形式：</strong>实习项目报告 + 推荐信 + 成果展示
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>开启AI × Business学习之旅</h2>
+            <p>培养孩子的商业思维与AI创新能力，为未来做好准备</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Coding Mind 编程思维. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
